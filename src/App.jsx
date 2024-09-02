@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 
-// Square component
 function Square({ value, onClick }) {
   return (
     <button className="square" onClick={onClick}>
@@ -10,7 +9,6 @@ function Square({ value, onClick }) {
   );
 }
 
-// Board component
 function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
@@ -18,12 +16,10 @@ function Board() {
   const handleClick = (index) => {
     const newSquares = squares.slice();
 
-    // Ignore click if the square is already filled or if there's a winner
     if (calculateWinner(squares) || squares[index]) {
       return;
     }
 
-    // Set the clicked square to X or O
     newSquares[index] = xIsNext ? "X" : "O";
     setSquares(newSquares);
     setXIsNext(!xIsNext);
@@ -73,7 +69,6 @@ function Board() {
   );
 }
 
-// Function to calculate the winner
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -95,7 +90,6 @@ function calculateWinner(squares) {
   return null;
 }
 
-// App component
 function App() {
   return (
     <div className="game">
